@@ -71,7 +71,16 @@ class RouteTwoScreen extends StatelessWidget {
                 // '/' 제외한 route 지움
                 (route) => route.settings.name == '/');
           },
-          child: const Text('push and remove until'),
+          child: const Text('Push And Remove Until'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                '/three',
+                // 모든 route 삭제
+                (route) => false);
+          },
+          child: const Text('All Route Remove'),
         ),
       ],
     );

@@ -19,6 +19,12 @@ class RouteThreeScreen extends StatelessWidget {
         },
         child: const Text('pop'),
       ),
+      ElevatedButton(
+        onPressed: () {
+          Navigator.of(context).maybePop();
+        },
+        child: const Text('maybePop'),
+      ),
     ]);
   }
 }

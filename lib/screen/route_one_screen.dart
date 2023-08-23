@@ -9,32 +9,37 @@ class RouteOneScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MainLayout(
-      title: 'Route One',
-      children: [
-        Text(
-          number.toString(),
-          textAlign: TextAlign.center,
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).pop(456);
-          },
-          child: const Text('pop'),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                  builder: (context) => const RouteTwoScreen(),
-                  settings: const RouteSettings(
-                    arguments: 789,
-                  )),
-            );
-          },
-          child: const Text('push'),
-        ),
-      ],
+    return WillPopScope(
+      onWillPop: () async {
+        return true;
+      },
+      child: MainLayout(
+        title: 'Route One',
+        children: [
+          Text(
+            number.toString(),
+            textAlign: TextAlign.center,
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop(456);
+            },
+            child: const Text('pop'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                    builder: (context) => const RouteTwoScreen(),
+                    settings: const RouteSettings(
+                      arguments: 789,
+                    )),
+              );
+            },
+            child: const Text('push'),
+          ),
+        ],
+      ),
     );
   }
 }
