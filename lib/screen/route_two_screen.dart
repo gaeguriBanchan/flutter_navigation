@@ -21,6 +21,15 @@ class RouteTwoScreen extends StatelessWidget {
           },
           child: const Text('pop'),
         ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed(
+              '/three',
+              arguments: 999,
+            );
+          },
+          child: const Text('push named'),
+        ),
       ],
     );
   }
