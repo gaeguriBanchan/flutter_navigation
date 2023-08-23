@@ -30,6 +30,49 @@ class RouteTwoScreen extends StatelessWidget {
           },
           child: const Text('push named'),
         ),
+        // ElevatedButton(
+        //   onPressed: () {
+        //     Navigator.of(context).pushReplacement(
+        //       MaterialPageRoute(
+        //         builder: (context) => const RouteThreeScreen(),
+        //       ),
+        //     );
+        //   },
+        //   child: const Text('push replacement'),
+        // ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).pushReplacementNamed(
+              '/three',
+            );
+          },
+          child: const Text('push replacement'),
+        ),
+        // ElevatedButton(
+        //   onPressed: () {
+        //     Navigator.of(context).pushAndRemoveUntil(
+        //         MaterialPageRoute(
+        //           builder: (context) => const RouteThreeScreen(),
+        //         ),
+        //         (route) => route.settings.name == '/');
+        //   },
+        //   child: const Text('push and remove until'),
+        // ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                '/three',
+                // route 값을 false 로 하면 route를 지움
+                // 각 route에 결과값에 따라 적용된다
+
+                // 모든 route 지움
+                // (route) => false);
+
+                // '/' 제외한 route 지움
+                (route) => route.settings.name == '/');
+          },
+          child: const Text('push and remove until'),
+        ),
       ],
     );
   }
